@@ -1,6 +1,8 @@
 <template>
   <b-card class="m-2" style="max-width: 15rem">
     <b-card-header :class="getColor(card.person)">
+    
+    <!-- toggle switch when is in IN PROGRESS -->
       <b-container v-if="title == 'In Progress'">
         <b-row>
           <b-col></b-col>
@@ -85,6 +87,8 @@ export default {
         return false;
       }
     },
+    
+    // add class to header for different color
     getColor(e) {
       for (let i = 0; i < this.headerColor.length; i++) {
         if (this.headerColor[i].person == e) {
