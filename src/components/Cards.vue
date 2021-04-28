@@ -72,10 +72,16 @@ export default {
   },
   methods: {
     handleDelete(e) {
-      this.$emit("sendDelete", e);
+      if (confirm("Confirm delete this task?")) {
+        this.$emit("sendDelete", e);
+      }
+      else { return }
     },
     handleNext(e) {
-      this.$emit("sendNext", e);
+      if (confirm("Confirm move this task to next column?")){
+        this.$emit("sendNext", e);
+      }
+      else { return }
     },
     handleImportant(e) {
       this.$emit("sendImportant", e);
