@@ -44,7 +44,7 @@
     </template>
 
     <!-- Main Body -->
-    <b-container class="mt-3 mb-3">
+    <b-container class="mt-3 pb-3">
       <b-row class="text-center" align-h="center">
         <Column
           class="p-0"
