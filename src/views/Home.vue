@@ -113,15 +113,19 @@ export default {
       this.addProject();
     },
 
+    // update important
     submitImportant(e) {
       this.db.important(e);
       this.updateCards();
     },
 
+    // delete card
     async submitDeleteCard(e) {
       await this.db.deleteCard(e, this.selected);
       this.updateCards();
     },
+    
+    // delete project and all cards in the project
     async submitDeleteProject() {
       if (this.selected != null) {
         if (confirm("Confirm delete " + this.selected + " ?") == true) {
@@ -130,23 +134,31 @@ export default {
         }
       }
     },
-
+    
+    //update to next status
     async submitNext(e) {
       await this.db.next(e);
       this.updateCards();
     },
 
+    // add new card in selected project
     async addCard(e) {
       await this.db.addCard(e, this.selected);
       this.updateCards();
     },
+    
+    // get all existing project
     async updateProjects() {
       this.projects = await this.db.getProjects();
     },
+    
+    // add new project
     async addProject() {
       await this.db.addProject(this.projectName);
       this.updateProjects();
     },
+    
+    // get all cards in selected project
     async updateCards() {
       if (this.selected != null) {
         let result = await this.db.getCards(this.selected);
@@ -156,6 +168,7 @@ export default {
         this.cardsArray.push(result[2].status2);
         this.cardsArray.push(result[3].status3);
       }
+      // get people unique color
       this.people = [];
       for (let i = 0; i < this.cardsArray.length; i++) {
         for (let j = 0; j < this.cardsArray[i].length; j++) {
@@ -166,10 +179,14 @@ export default {
       this.personColor();
       console.log(this.headerColor);
     },
+    
+    // distinct person name
     //https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
     onlyUnique(value, index, self) {
       return self.indexOf(value) === index;
     },
+    
+    // array of object with person and color
     personColor() {
       this.headerColor = [];
       for (let i = 0; i < this.people.length; i++) {
