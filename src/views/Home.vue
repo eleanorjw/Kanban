@@ -219,6 +219,7 @@ $d-red: #98061d;
 .home {
   color: $dd-blue !important;
   background-color: $s-beige !important;
+  min-height: 100vh;
 }
 .navbar {
   background-color: $bar-green !important;
